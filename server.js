@@ -39,15 +39,15 @@ app.get('/api/books', (req, res) => {
   }
 });
 
-// app.get('/api/books/:id', (req, res) => {
-//   try {
-//     const book = books.find(b => b.id === parseInt(req.params.id));
-//     if (!book) return res.status(404).json({ message: 'Book not found' });
-//     res.json(book);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error fetching book', error: error.message });
-//   }
-// });
+app.get('/api/books/:id', (req, res) => {
+  try {
+    const book = books.find(b => b.id === parseInt(req.params.id));
+    if (!book) return res.status(404).json({ message: 'Book not found' });
+    res.json(book);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching book', error: error.message });
+  }
+});
 
 app.post('/api/books', (req, res) => {
   try {
@@ -63,34 +63,34 @@ app.post('/api/books', (req, res) => {
   }
 });
 
-// app.put('/api/books/:id', (req, res) => {
-//   try {
-//     const bookIndex = books.findIndex(b => b.id === parseInt(req.params.id));
-//     if (bookIndex === -1) return res.status(404).json({ message: 'Book not found' });
+app.put('/api/books/:id', (req, res) => {
+  try {
+    const bookIndex = books.findIndex(b => b.id === parseInt(req.params.id));
+    if (bookIndex === -1) return res.status(404).json({ message: 'Book not found' });
     
-//     books[bookIndex] = {
-//       ...books[bookIndex],
-//       ...req.body,
-//       updatedAt: new Date().toISOString()
-//     };
+    books[bookIndex] = {
+      ...books[bookIndex],
+      ...req.body,
+      updatedAt: new Date().toISOString()
+    };
     
-//     res.json(books[bookIndex]);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error updating book', error: error.message });
-//   }
-// });
+    res.json(books[bookIndex]);
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating book', error: error.message });
+  }
+});
 
-// app.delete('/api/books/:id', (req, res) => {
-//   try {
-//     const bookIndex = books.findIndex(b => b.id === parseInt(req.params.id));
-//     if (bookIndex === -1) return res.status(404).json({ message: 'Book not found' });
+app.delete('/api/books/:id', (req, res) => {
+  try {
+    const bookIndex = books.findIndex(b => b.id === parseInt(req.params.id));
+    if (bookIndex === -1) return res.status(404).json({ message: 'Book not found' });
     
-//     const deletedBook = books.splice(bookIndex, 1);
-//     res.json(deletedBook[0]);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error deleting book', error: error.message });
-//   }
-// });
+    const deletedBook = books.splice(bookIndex, 1);
+    res.json(deletedBook[0]);
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting book', error: error.message });
+  }
+});
 
 // Serve static files from the React build directory
 app.use(express.static(path.join(__dirname, 'build')));
