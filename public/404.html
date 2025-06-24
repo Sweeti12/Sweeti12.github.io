@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Get the current path from the URL.
+      var path = window.location.pathname;
+
+      // If the path has a subdirectory for the repo, remove it.
+      // (This is common for GitHub Pages projects not on a custom domain).
+      var repoName = '/Sweeti12.github.io'; 
+      if (path.startsWith(repoName)) {
+        path = path.substring(repoName.length);
+      }
+
+      // Preserve the query string and hash.
+      var queryString = window.location.search;
+      var hash = window.location.hash;
+
+      // Redirect to the same path on the root, which will be handled by React Router.
+      window.location.replace(
+        window.location.protocol + '//' + window.location.host + path + queryString + hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html> 
