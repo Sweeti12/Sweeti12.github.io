@@ -16,7 +16,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://book-inventory-backend.onrender.com/api'
+  : 'http://localhost:5000/api';
 
 const BookDetails = () => {
   const { id } = useParams();
