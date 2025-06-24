@@ -27,7 +27,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://book-inventory-backend-nivq.onrender.com/api'
+  : 'http://localhost:5000/api';
 
 const Home = () => {
   const [books, setBooks] = useState([]);

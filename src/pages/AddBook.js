@@ -17,7 +17,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
 
 const API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://book-inventory-backend.onrender.com/api'
+  ? 'https://book-inventory-backend-nivq.onrender.com/api'
   : 'http://localhost:5000/api';
 
 const validationSchema = yup.object({
