@@ -76,8 +76,9 @@ app.get('/api/books/:id', (req, res) => {
 
 app.post('/api/books', (req, res) => {
   try {
+    const maxId = books.reduce((max, book) => (book.id > max ? book.id : max), 0);
     const newBook = {
-      id: books.length + 1,
+      id: maxId + 1,
       ...req.body,
       createdAt: new Date().toISOString()
     };
