@@ -23,7 +23,32 @@ app.use((req, res, next) => {
 });
 
 // Sample data store (replace with a database in production)
-let books = [];
+let books = [
+  {
+    id: 1,
+    title: 'The Great Gatsby',
+    author: 'F. Scott Fitzgerald',
+    publisher: 'Charles Scribner\'s Sons',
+    publishedDate: '1925-04-10',
+    isbn: '9780743273565',
+    price: 15.00,
+    quantity: 10,
+    overview: 'The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 2,
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publisher: 'J. B. Lippincott & Co.',
+    publishedDate: '1960-07-11',
+    isbn: '9780061120084',
+    price: 12.99,
+    quantity: 5,
+    overview: 'The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.',
+    createdAt: new Date().toISOString()
+  }
+];
 
 // Health check endpoint
 app.get('/health', (req, res) => {
